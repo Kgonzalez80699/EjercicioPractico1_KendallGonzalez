@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:replace="~{fragments/plantilla_base :: title(tituloPagina='Listado de Productos')}"></title>
-    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="templates/estilos.css"/>
     </head>
 <body>
 
@@ -43,7 +43,7 @@
         </table>
     </main>
 
-    <div th:replace="~{fragments/plantilla_base :: footer}"></div>
+    <div th:replace="~{layout/plantilla :: footer}"></div>
 
 </body>
 </html>
