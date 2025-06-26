@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/plantilla}">
+      <link rel="stylesheet" href="estilos.css" />
+<head>
+    <title>Listado de Categorías</title>
+</head>
+<body>
+    <section layout:fragment="contenido">
+        <h2 class="mb-4">Listado de Categorías <i class="fas fa-tags"></i></h2>
+
+        <div th:if="${categorias != null and !categorias.empty}">
+            <div class="text-right mb-3">
+                <a th:href="@{/categorias/nueva}" class="btn btn-success"><i class="fas fa-plus"></i> Nueva Categoría</a>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria : ${categorias}">
+                        <td th:text="${categoria.id}"></td>
+                        <td th:text="${categoria.nombre}"></td>
+                        <td th:text="${categoria.descripcion}"></td>
+                        <td>
+                            <a th:href="@{/categorias/modificar/} + ${categoria.id}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                            <a th:href="@{/categorias/eliminar/} + ${categoria.id}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta categoría?')"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-muted">Total de categorías: <span th:text="${totalCategorias}"></span></p>
+        </div>
+        <div th:if="${categorias == null or categorias.empty}" class="alert alert-info" role="alert">
+            No hay categorías registradas.
+            <div class="text-center mt-3">
+                <a th:href="@{/categorias/nueva}" class="btn btn-success"><i class="fas fa-plus"></i> Crear Nueva Categoría</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/plantilla}">
+      <link rel="stylesheet" href="estilos.css" />
+<head>
+    <title>Modificar Categoría</title>
+</head>
+<body>
+    <section layout:fragment="contenido">
+        <h2 class="mb-4" th:text="${categoria.id} ? 'Modificar Categoría' : 'Nueva Categoría'"></h2>
+        <form th:action="@{/categorias/guardar}" th:object="${categoria}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+            <a th:href="@{/categorias/}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Cancelar</a>
+        </form>
+    </section>
+</body>
+</html>

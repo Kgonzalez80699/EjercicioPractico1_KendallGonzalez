@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="~{fragments/plantilla_base :: title(tituloPagina='Listado de Productos')}"></title>
+    <link rel="stylesheet" href="estilos.css" />
+    </head>
+<body>
+
+    <div th:replace="~{fragments/plantilla_base :: header}"></div>
+
+    <div th:replace="~{fragments/plantilla_base :: navbar}"></div>
+
+    <main>
+        <h2 th:text="${tituloListado}">Nuestros Productos</h2>
+        <a th:href="@{/productos/nuevo}">Agregar Nuevo Producto</a>
+        <br><br>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="producto : ${productos}">
+                    <td th:text="${producto.id}">1</td>
+                    <td th:text="${producto.nombre}">Paracetamol</td>
+                    <td th:text="${producto.descripcion}">Medicamento para el dolor y la fiebre.</td>
+                    <td th:text="${producto.precio}">5.50</td>
+                    <td th:text="${producto.categoria.nombre}">Analgésicos</td>
+                    <td>
+                        <a th:href="@{/productos/editar/{id}(id=${producto.id})}">Editar</a> |
+                        <a th:href="@{/productos/eliminar/{id}(id=${producto.id})}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div th:replace="~{fragments/plantilla_base :: footer}"></div>
+
+</body>
+</html>

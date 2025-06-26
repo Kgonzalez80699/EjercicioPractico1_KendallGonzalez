@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="~{fragments/plantilla_base :: title(tituloPagina='Quejas y Sugerencias')}"></title>
+    <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+    <div th:replace="~{fragments/plantilla_base :: header}"></div>
+
+    <div th:replace="~{fragments/plantilla_base :: navbar}"></div>
+
+    <main>
+        <section id="formulario-contacto">
+            <h2>Envía tu Queja o Sugerencia</h2>
+            <p>Valoramos tu opinión. Por favor, utiliza el siguiente formulario para enviarnos tus comentarios, quejas o sugerencias.</p>
+
+            <form action="/quejas/guardar" method="post">
+                <label for="nombreContacto">Tu Nombre:</label><br>
+                <input type="text" id="nombreContacto" name="nombreContacto" required><br><br>
+
+                <label for="emailContacto">Tu Correo Electrónico:</label><br>
+                <input type="email" id="emailContacto" name="emailContacto" required><br><br>
+
+                <label for="telefonoContacto">Tu Teléfono (Opcional):</label><br>
+                <input type="tel" id="telefonoContacto" name="telefonoContacto" pattern="[0-9]{8,}" title="Por favor, introduce un número de teléfono válido de al menos 8 dígitos"><br><br>
+
+                <label for="titulo">Asunto / Título:</label><br>
+                <input type="text" id="titulo" name="titulo" required><br><br>
+
+                <label for="descripcion">Tu Mensaje (Queja o Sugerencia):</label><br>
+                <textarea id="descripcion" name="descripcion" rows="8" cols="60" required></textarea><br><br>
+
+                <button type="submit">Enviar Mensaje</button>
+                <button type="reset">Limpiar Formulario</button>
+            </form>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/plantilla_base :: footer}"></div>
+
+</body>
+</html>

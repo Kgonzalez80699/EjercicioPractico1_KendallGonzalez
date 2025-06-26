@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/plantilla}">
+      <link rel="stylesheet" href="estilos.css" />
+<head>
+    <title>Listado de Sugerencias y Quejas</title>
+</head>
+<body>
+    <section layout:fragment="contenido">
+        <h2 class="mb-4">Sugerencias y Quejas Recibidas <i class="fas fa-inbox"></i></h2>
+
+        <div th:if="${sugerenciasQuejas != null and !sugerenciasQuejas.empty}">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Contacto</th>
+                        <th>Email Contacto</th>
+                        <th>Tipo</th>
+                        <th>Mensaje</th>
+                        <th>Fecha Envío</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sq : ${sugerenciasQuejas}">
+                        <td th:text="${sq.id}"></td>
+                        <td th:text="${sq.nombreContacto}"></td>
+                        <td th:text="${sq.emailContacto}"></td>
+                        <td th:text="${sq.tipo}"></td>
+                        <td th:text="${sq.mensaje}"></td>
+                        <td th:text="${#temporals.format(sq.fechaEnvio, 'dd-MM-yyyy HH:mm')}"></td>
+                        <td>
+                            <a th:href="@{/sugerencias-quejas/eliminar/} + ${sq.id}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta sugerencia/queja?')"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${sugerenciasQuejas == null or sugerenciasQuejas.empty}" class="alert alert-info" role="alert">
+            No hay sugerencias o quejas registradas.
+        </div>
+    </section>
+</body>
+</html>

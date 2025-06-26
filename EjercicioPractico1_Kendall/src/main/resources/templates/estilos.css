@@ -1,0 +1,220 @@
+/* Estilos Generales para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #38b0c5; /* Un gris claro */
+    color: #23c54b;
+    line-height: 1.6;
+}
+
+/* Estilos para el Contenedor principal si lo usas, o para 'main' */
+main {
+    padding: 20px;
+    max-width: 960px;
+    margin: 20px auto; /* Centra el contenido principal */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(62, 40, 75, 0.1);
+}
+
+/* Header */
+header {
+    background-color: #4CAF50; /* Verde farmacia */
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Navbar */
+nav {
+    background-color: #333; /* Gris oscuro para la barra de navegación */
+    padding: 0.8rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Para que los ítems estén en una fila */
+    justify-content: center; /* Centra los ítems */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #8BC34A; /* Un verde más claro al pasar el ratón */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 30px;
+}
+
+/* Estilos para encabezados de contenido */
+h2 {
+    color: #4CAF50;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+/* Estilos para tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+    color: #555;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilos para formularios */
+form {
+    background-color: #fdfdfd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="number"],
+form textarea,
+form select {
+    width: calc(100% - 22px); /* Ancho total menos padding y borde */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Incluye padding y borde en el ancho */
+}
+
+form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+form button[type="submit"],
+form button[type="reset"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="reset"] {
+    background-color: #f44336; /* Rojo para reset o cancelar */
+}
+
+form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+form button[type="reset"]:hover {
+    background-color: #da190b;
+}
+
+/* Estilos para enlaces de acción (Editar, Eliminar, Agregar) */
+a.button,
+a[href*="nuevo"],
+a[href*="editar"],
+a[href*="eliminar"] {
+    display: inline-block;
+    background-color: #008CBA; /* Azul para acciones */
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
+}
+a[href*="editar"] { background-color: #FFC107; color: #333; } /* Amarillo para editar */
+a[href*="eliminar"] { background-color: #f44336; } /* Rojo para eliminar */
+a[href*="nuevo"] { background-color: #4CAF50; } /* Verde para nuevo */
+
+a.button:hover,
+a[href*="nuevo"]:hover,
+a[href*="editar"]:hover,
+a[href*="eliminar"]:hover {
+    opacity: 0.9;
+}
+
+/* Estilos para el video iframe */
+iframe {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+/* Pequeñas mejoras de responsividad */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form input[type="number"],
+    form textarea,
+    form select {
+        width: 100%;
+    }
+}

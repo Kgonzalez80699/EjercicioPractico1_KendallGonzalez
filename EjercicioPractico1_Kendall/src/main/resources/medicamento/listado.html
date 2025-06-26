@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/plantilla}">
+      <link rel="stylesheet" href="estilos.css" />
+<head>
+    <title>Listado de Medicamentos</title>
+</head>
+<body>
+    <section layout:fragment="contenido">
+        <h2 class="mb-4">Listado de Medicamentos <i class="fas fa-pills"></i></h2>
+
+        <div th:if="${medicamentos != null and !medicamentos.empty}">
+            <div class="text-right mb-3">
+                <a th:href="@{/medicamentos/nuevo}" class="btn btn-success"><i class="fas fa-plus"></i> Nuevo Medicamento</a>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="medicamento : ${medicamentos}">
+                        <td th:text="${medicamento.id}"></td>
+                        <td th:text="${medicamento.nombre}"></td>
+                        <td th:text="${medicamento.descripcion}"></td>
+                        <td th:text="${#numbers.formatCurrency(medicamento.precio)}"></td>
+                        <td th:text="${medicamento.stock}"></td>
+                        <td th:text="${medicamento.categoria != null ? medicamento.categoria.nombre : 'Sin Categoría'}"></td>
+                        <td>
+                            <a th:href="@{/medicamentos/modificar/} + ${medicamento.id}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                            <a th:href="@{/medicamentos/eliminar/} + ${medicamento.id}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este medicamento?')"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-muted">Total de medicamentos: <span th:text="${totalMedicamentos}"></span></p>
+        </div>
+        <div th:if="${medicamentos == null or medicamentos.empty}" class="alert alert-info" role="alert">
+            No hay medicamentos registrados.
+            <div class="text-center mt-3">
+                <a th:href="@{/medicamentos/nuevo}" class="btn btn-success"><i class="fas fa-plus"></i> Crear Nuevo Medicamento</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

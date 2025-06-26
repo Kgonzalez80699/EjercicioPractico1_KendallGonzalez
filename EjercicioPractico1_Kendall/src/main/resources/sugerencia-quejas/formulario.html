@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/plantilla}">
+      <link rel="stylesheet" href="estilos.css" />
+<head>
+    <title>Formulario de Sugerencias y Quejas</title>
+</head>
+<body>
+    <section layout:fragment="contenido">
+        <h2 class="mb-4">Envíanos tu Sugerencia o Queja <i class="fas fa-comment-dots"></i></h2>
+        <p class="text-muted">Valoramos tu opinión. Por favor, rellena el siguiente formulario.</p>
+
+        <form th:action="@{/sugerencias-quejas/enviar}" th:object="${sugerenciaQueja}" method="post">
+            <div class="form-group">
+                <label for="nombreContacto">Tu Nombre:</label>
+                <input type="text" class="form-control" id="nombreContacto" th:field="*{nombreContacto}" required>
+            </div>
+            <div class="form-group">
+                <label for="emailContacto">Tu Email:</label>
+                <input type="email" class="form-control" id="emailContacto" th:field="*{emailContacto}" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo:</label>
+                <select class="form-control" id="tipo" th:field="*{tipo}" required>
+                    <option value="">Selecciona el tipo</option>
+                    <option value="Sugerencia">Sugerencia</option>
+                    <option value="Queja">Queja</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea class="form-control" id="mensaje" th:field="*{mensaje}" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar</button>
+            <a th:href="@{/}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+        </form>
+    </section>
+</body>
+</html>
